@@ -1,18 +1,18 @@
 "use client";
 import { useTheme } from "next-themes";
-import { SunIcon, MoonIcon } from "./Icons";
-import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
+
 import { useAutoAnimate } from "@formkit/auto-animate/react";
+
+// Dynamically import the DarkModeIcon component with no server-side rendering (ssr: false)
+const MoonIcon = dynamic(() => import("./Icons/MoonIcon"), { ssr: false });
+
+// Dynamically import the LightModeIcon component with no server-side rendering (ssr: false)
+const SunIcon = dynamic(() => import("./Icons/SunIcons"), { ssr: false });
 
 export default function ThemeChanger() {
   const { theme, setTheme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState<boolean>(false);
   const [animationParent] = useAutoAnimate();
-
-  //! useEffect only runs on the client, so now we can safely show the UI
-  useEffect(() => setMounted(true), []);
-  //? if we're not on the client, return null
-  if (!mounted) return null;
 
   return (
     <div>

@@ -1,10 +1,22 @@
 import PageTitle from "@/components/PageTitle";
 import Image from "next/image";
 import HeroImage from "@/images/utkarsh-img.webp";
-import { GithubIcon, Email, LinkedinIcon } from "@/components/Icons";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 
 export default function Home() {
+  const GithubIcon = dynamic(() => import("@/components/Icons/GithubIcon"), {
+    ssr: false,
+  });
+  const Email = dynamic(() => import("@/components/Icons/Email"), {
+    ssr: false,
+  });
+  const LinkedinIcon = dynamic(
+    () => import("@/components/Icons/LinkedinIcon"),
+    {
+      ssr: false,
+    }
+  );
   return (
     <main>
       <PageTitle title="Home" />
