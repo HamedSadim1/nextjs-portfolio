@@ -3,16 +3,9 @@ import Image from "next/image";
 import HeroImage from "@/images/utkarsh-img.webp";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-const GithubIcon = dynamic(() => import("../components/Icons/GithubIcon"), {
-  ssr: false,
-});
-
-const Email = dynamic(() => import("@/components/Icons/Email"), {
-  ssr: false,
-});
-const LinkedinIcon = dynamic(() => import("@/components/Icons/LinkedinIcon"), {
-  ssr: false,
-});
+import GithubIcon from "@/components/Icons/GithubIcon";
+import Email from "@/components/Icons/Email";
+import LinkedinIcon from "@/components/Icons/LinkedinIcon";
 
 export default function Home() {
   return (

@@ -1,18 +1,21 @@
 "use client";
 import { useTheme } from "next-themes";
-import dynamic from "next/dynamic";
-
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-
-// Dynamically import the DarkModeIcon component with no server-side rendering (ssr: false)
-const MoonIcon = dynamic(() => import("./Icons/MoonIcon"), { ssr: false });
-
-// Dynamically import the LightModeIcon component with no server-side rendering (ssr: false)
-const SunIcon = dynamic(() => import("./Icons/SunIcons"), { ssr: false });
+import { useEffect, useState } from "react";
+import SunIcon from "./Icons/SunIcons";
+import MoonIcon from "./Icons/MoonIcon";
 
 export default function ThemeChanger() {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [animationParent] = useAutoAnimate();
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <div>
