@@ -2,9 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-type Props = {};
-
-const Card = (props: Props) => {
+const Card = () => {
   return (
     <div className="border flex flex-col w-[300px] shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] rounded-md overflow-hidden ">
       <div className="h-[244px]  border relative">
