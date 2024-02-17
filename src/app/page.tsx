@@ -1,7 +1,6 @@
 import PageTitle from "@/components/PageTitle";
 import Image from "next/image";
 import HeroImage from "@/images/utkarsh-img.webp";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import GithubIcon from "@/components/Icons/GithubIcon";
 import Email from "@/components/Icons/Email";
