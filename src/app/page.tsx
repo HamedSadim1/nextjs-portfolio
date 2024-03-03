@@ -36,7 +36,14 @@ export default function Home() {
           {/* right dex */}
           <p>
             Welcome to my portfolio! Im a versatile frontend developer
-            specializing in crafting engaging and responsive web applications.
+            specializing in crafting engaging and responsive web applications. I
+            have a passion for creating intuitive and user-friendly interfaces
+            that enhance the overall user experience. I strive to stay
+            up-to-date with the latest web development trends and technologies
+            to continuously improve my skills. Feel free to explore my portfolio
+            and get in touch with me for any inquiries or collaboration
+            opportunities. Im excited to work on new and challenging projects!
+            Thank you for visiting my portfolio!
           </p>
           <p>
             With a strong command of React.js, Tailwind CSS, and TypeScript,
