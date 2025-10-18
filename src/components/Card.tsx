@@ -4,7 +4,7 @@ import React from "react";
 
 const Card = () => {
   return (
-    <div className="border flex flex-col w-[300px] shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] rounded-md overflow-hidden ">
+    <div className="border flex flex-col w-[300px] shadow-[0_20px_50px_rgba(8,112,184,0.7)] rounded-md overflow-hidden ">
       <div className="h-[244px]  border relative">
         <Image
           src="https://images.unsplash.com/photo-1570649236495-42fa5fe5c48b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
