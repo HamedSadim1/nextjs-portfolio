@@ -1,7 +1,6 @@
 import HeroSection from "@/components/HeroSection";
 import { type Project } from "@/components/Card";
 import PageTitle from "@/components/PageTitle";
-import heroImage from "@/images/utkarsh-img.webp";
 import type { Metadata } from "next";
 import { fetchUser } from "@/lib/fetchUser";
 import AnimatedHero from "@/components/AnimatedHero";
@@ -10,6 +9,7 @@ import Skills, { type SkillCategory } from "@/components/Skills";
 import { prisma } from "@/lib/prisma";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 
+// SEO metadata voor de hoofdpagina
 export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
@@ -31,62 +31,72 @@ export const metadata: Metadata = {
     description:
       "Frontend developer gespecialiseerd in moderne webtechnologieën. Bekijk mijn projecten en vaardigheden.",
     type: "website",
-    images: [{ url: "/images/utkarsh-img.webp", alt: "Hamid Sadim" }],
+    images: [{ url: "/images/avatar.webp", alt: "Hamid Sadim" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Hamid Sadim - Portfolio",
     description: "Ontdek mijn werk als frontend developer en mijn projecten.",
-    images: ["/images/utkarsh-img.webp"],
+    images: ["/images/avatar.webp"],
   },
 };
 
 export default async function Home() {
   try {
-    // Parallel data fetching voor betere performance
-    const [userData, projectsData, skillsData] = await Promise.all([
+    // Parallel data fetching voor betere performance - alle database queries tegelijk uitvoeren
+    const [userData, projectsData, skillsData] = await Promise.allSettled([
       fetchUser(),
-      prisma.project
-        .findMany({
-          orderBy: { createdAt: "desc" },
-          take: 6,
-          select: {
-            id: true,
-            title: true,
-            description: true,
-            imageUrl: true,
-            liveUrl: true,
-            tags: true,
-            createdAt: true,
+      // Haal projecten op uit database - alleen benodigde velden selecteren voor performance
+      prisma.project.findMany({
+        orderBy: { createdAt: "desc" },
+        take: 6, // Maximaal 6 projecten tonen
+        select: {
+          id: true,
+          title: true,
+          description: true,
+          imageUrl: true,
+          liveUrl: true,
+          tags: true,
+          createdAt: true,
+        },
+      }),
+      // Haal vaardigheden op gegroepeerd per categorie
+      prisma.skillCategory.findMany({
+        orderBy: { order: "asc" },
+        include: {
+          skills: {
+            orderBy: { name: "asc" },
           },
-        })
-        .catch((error) => {
-          console.error("Failed to fetch projects:", error);
-          return []; // Return empty array on error
-        }),
-      prisma.skillCategory
-        .findMany({
-          orderBy: { order: "asc" },
-          include: {
-            skills: {
-              orderBy: { name: "asc" },
-            },
-          },
-        })
-        .catch((error) => {
-          console.error("Failed to fetch skills:", error);
-          return []; // Return empty array on error
-        }),
+        },
+      }),
     ]);
 
-    // Transform skills data naar het verwachte formaat
-    const skills: SkillCategory[] = skillsData.map((category) => ({
+    // Extract data from Promise.allSettled results with proper error handling
+    const user = userData.status === "fulfilled" ? userData.value : null;
+    const projectsDataArray =
+      projectsData.status === "fulfilled" ? projectsData.value : [];
+    const skillsDataArray =
+      skillsData.status === "fulfilled" ? skillsData.value : [];
+
+    // Log errors for debugging
+    if (userData.status === "rejected") {
+      console.error("Fout bij ophalen gebruikersdata:", userData.reason);
+    }
+    if (projectsData.status === "rejected") {
+      console.error("Fout bij ophalen projecten:", projectsData.reason);
+    }
+    if (skillsData.status === "rejected") {
+      console.error("Fout bij ophalen vaardigheden:", skillsData.reason);
+    }
+
+    // Transform database data naar component format
+    const skills: SkillCategory[] = skillsDataArray.map((category) => ({
       title: category.title,
       skills: category.skills.map((skill) => skill.name),
     }));
 
-    // Transform tags - nu al een array dankzij JSON opslag
-    const projects: Project[] = projectsData.map((p) => ({
+    // Transform projecten - tags zijn al arrays dankzij JSON opslag in database
+    const projects: Project[] = projectsDataArray.map((p) => ({
       id: p.id,
       title: p.title,
       description: p.description,
@@ -97,7 +107,7 @@ export default async function Home() {
 
     return (
       <main className="min-h-screen bg-linear-to-br from-background via-background to-muted/20">
-        {/* Hero Section */}
+        {/* Hero Sectie - Introductie en persoonlijke info */}
         <section
           className="flex flex-col items-center px-4 py-12 md:py-20"
           aria-labelledby="hero-heading"
@@ -111,11 +121,19 @@ export default async function Home() {
               </div>
             }
           >
-            <AnimatedHero userData={userData} />
+            {user ? (
+              <AnimatedHero userData={user} />
+            ) : (
+              <div className="w-full max-w-5xl py-12 text-center">
+                <p className="text-muted-foreground">
+                  Gebruikersgegevens tijdelijk niet beschikbaar.
+                </p>
+              </div>
+            )}
           </ErrorBoundary>
         </section>
 
-        {/* Skills Section */}
+        {/* Vaardigheden Sectie - Technische skills overzicht */}
         <ErrorBoundary
           fallback={
             <div className="container mx-auto px-4 py-16 text-center">
@@ -125,10 +143,18 @@ export default async function Home() {
             </div>
           }
         >
-          <Skills skills={skills} />
+          {skills.length > 0 ? (
+            <Skills skills={skills} />
+          ) : (
+            <section className="container mx-auto px-4 py-16 text-center">
+              <p className="text-muted-foreground">
+                Vaardigheden tijdelijk niet beschikbaar.
+              </p>
+            </section>
+          )}
         </ErrorBoundary>
 
-        {/* Projects Section */}
+        {/* Projecten Sectie - Portfolio projecten */}
         <section
           id="projects"
           className="container mx-auto px-4 py-16"
@@ -152,19 +178,29 @@ export default async function Home() {
               </div>
             }
           >
-            <AnimatedProjectGrid projects={projects} />
+            {projects.length > 0 ? (
+              <AnimatedProjectGrid projects={projects} />
+            ) : (
+              <div className="text-center py-12">
+                <p className="text-muted-foreground">
+                  Projecten tijdelijk niet beschikbaar.
+                </p>
+              </div>
+            )}
           </ErrorBoundary>
         </section>
       </main>
     );
   } catch (error) {
-    console.error("Failed to load page data:", error);
+    // Foutafhandeling voor de hele pagina
+    console.error("Kritieke fout bij laden hoofdpagina:", error);
     return (
       <main className="min-h-screen bg-linear-to-br from-background via-background to-muted/20">
         <div className="container mx-auto px-4 py-16 text-center">
           <h1 className="text-2xl font-bold mb-4">Er is iets misgegaan</h1>
           <p className="text-muted-foreground">
-            Probeer de pagina te vernieuwen.
+            Probeer de pagina te vernieuwen of neem contact op als het probleem
+            aanhoudt.
           </p>
         </div>
       </main>
