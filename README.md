@@ -171,32 +171,73 @@ npx prisma generate  # Generate Prisma client
 
 ## 🌐 Deployment
 
-### Vercel (Recommended)
+### Vercel (Automatisch - Aanbevolen)
 
-1. **Connect Repository**
+Dit project heeft automatische deployment naar Vercel via GitHub Actions.
 
-   - Import project op [Vercel](https://vercel.com)
-   - Connect je GitHub repository
+#### 📋 Setup Steps
 
-2. **Environment Variables**
+1. **Vercel Account**
+   - Ga naar [vercel.com](https://vercel.com) en maak een account
+   - Verbind je GitHub account
 
-   ```env
-   NEXT_PUBLIC_SITE_URL=https://jouw-portfolio.vercel.app
-   DATABASE_URL=your_production_database_url
-   ```
+2. **Vercel Token Genereren**
+   - Ga naar [Vercel Dashboard → Settings → Tokens](https://vercel.com/account/tokens)
+   - Klik "Create Token"
+   - Geef het een naam (bijv. "portfolio-deploy")
+   - Kopieer de token
 
-3. **Deploy**
-   - Vercel detecteert automatisch Next.js
-   - Database migrations runnen automatisch
+3. **GitHub Secrets Configureren**
+   - Ga naar je repository: `github.com/HamedSadim1/nextjs-portfolio`
+   - Klik "Settings" → "Secrets and variables" → "Actions"
+   - Klik "New repository secret"
+   - **Name:** `VERCEL_TOKEN`
+   - **Value:** Plak je Vercel token hier
+   - Klik "Add secret"
 
-### Manual Deployment
+4. **Database voor Production**
+   - Gebruik [Prisma Postgres](https://console.prisma.io) of een andere PostgreSQL database
+   - Voeg `DATABASE_URL` toe aan Vercel environment variables
+
+5. **Automatische Deployment**
+   - Elke push naar `main` branch triggert automatische deployment
+   - Check de "Actions" tab op GitHub voor deployment status
+   - Je live site: `https://nextjs-portfolio-[random].vercel.app`
+
+#### 🔧 Environment Variables in Vercel
+
+```env
+DATABASE_URL=postgresql://...
+NEXT_PUBLIC_SITE_URL=https://jouw-portfolio.vercel.app
+```
+
+### Manual Vercel Deployment
 
 ```bash
-# Build for production
-npm run build
+# Installeer Vercel CLI
+npm install -g vercel
 
-# Start production server
-npm run start
+# Login
+vercel login
+
+# Deploy
+vercel --prod
+```
+
+### Other Platforms
+
+#### Netlify
+
+```bash
+npm run build
+# Upload .next folder naar Netlify
+```
+
+#### Railway / Render
+
+```bash
+# Gebruik Dockerfile of build commands
+npm run build && npm run start
 ```
 
 ## 🔧 Configuration
