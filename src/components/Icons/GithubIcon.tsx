@@ -1,13 +1,15 @@
 import React from "react";
 
+// Dit is een SVG-icoon component. Het is aangepast om props (zoals className) te accepteren,
+// zodat de styling (grootte, kleur, etc.) flexibel kan worden aangepast met Tailwind CSS.
 const GithubIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
-      {...props}
+      {...props} // Spreid alle doorgegeven props naar het svg-element
       viewBox="0 0 20 20"
       xmlns="http://www.w3.org/2000/svg"
-      fill="currentColor"
-      stroke="currentColor"
+      fill="currentColor" // Gebruik de huidige tekstkleur voor de vulling
+      stroke="currentColor" // Gebruik de huidige tekstkleur voor de lijn
     >
       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
       <g

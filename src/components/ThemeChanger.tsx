@@ -5,6 +5,12 @@ import { useEffect, useState } from "react";
 import SunIcon from "./Icons/SunIcons";
 import MoonIcon from "./Icons/MoonIcon";
 
+/**
+ * ThemeChanger component voor het wisselen tussen licht en donker thema.
+ * Gebruikt next-themes voor theme management en auto-animate voor vloeiende icoon overgangen.
+ * Toont een zon icoon in donkere modus en maan icoon in lichte modus.
+ * Voorkomt hydration mismatch door alleen te renderen na mounting.
+ */
 export default function ThemeChanger() {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [animationParent] = useAutoAnimate();

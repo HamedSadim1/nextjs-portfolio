@@ -1,12 +1,14 @@
 import React from "react";
 
+// Dit is een SVG-icoon component. Het is aangepast om props (zoals className) te accepteren,
+// zodat de styling (grootte, kleur, etc.) flexibel kan worden aangepast met Tailwind CSS.
 const LinkedinIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
-      {...props}
+      {...props} // Spreid alle doorgegeven props naar het svg-element
       viewBox="0 0 24 24"
-      fill="currentColor"
-      stroke="currentColor"
+      fill="currentColor" // Gebruik de huidige tekstkleur voor de vulling
+      stroke="currentColor" // Gebruik de huidige tekstkleur voor de lijn
       xmlns="http://www.w3.org/2000/svg"
     >
       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
