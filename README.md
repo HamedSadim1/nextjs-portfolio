@@ -1,5 +1,11 @@
 # 🚀 Hamid Sadim - Portfolio Website
 
+[![Next.js](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3-38B2AC)](https://tailwindcss.com/)
+[![Prisma](https://img.shields.io/badge/Prisma-6-2D3748)](https://prisma.io/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Een moderne, volledig responsive portfolio website gebouwd met Next.js 16, Tailwind CSS en Prisma. Toont projecten, vaardigheden en persoonlijke informatie op een professionele en visueel aantrekkelijke manier.
 
 ![Portfolio Preview](./public/images/utkarsh-img.webp)
