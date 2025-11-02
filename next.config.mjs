@@ -8,8 +8,8 @@ const nextConfig = {
     // Sta externe afbeeldingen toe van Unsplash voor project screenshots
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "images.unsplash.com",
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
       },
     ],
   },

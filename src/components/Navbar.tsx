@@ -1,15 +1,15 @@
-"use client"; // Deze component moet een Client Component zijn vanwege de animaties en de Sheet (state)
+'use client'; // Deze component moet een Client Component zijn vanwege de animaties en de Sheet (state)
 
-import Link from "next/link";
-import ThemeChanger from "./ThemeChanger";
-import Navlink from "./Navlink";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"; // shadcn/ui component voor het zijmenu
-import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react"; // Hamburger menu icoon
-import { Home } from "lucide-react"; // Huis icoon
-import { FolderOpen } from "lucide-react"; // Projecten icoon
-import { Code } from "lucide-react"; // Skills icoon
-import { motion } from "framer-motion"; // Voor animaties
+import Link from 'next/link';
+import ThemeChanger from './ThemeChanger';
+import Navlink from './Navlink';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'; // shadcn/ui component voor het zijmenu
+import { Button } from '@/components/ui/button';
+import { Menu } from 'lucide-react'; // Hamburger menu icoon
+import { Home } from 'lucide-react'; // Huis icoon
+import { FolderOpen } from 'lucide-react'; // Projecten icoon
+import { Code } from 'lucide-react'; // Skills icoon
+import { motion } from 'framer-motion'; // Voor animaties
 
 // Definieer het type voor navigatie links
 interface NavLink {
@@ -20,9 +20,9 @@ interface NavLink {
 
 // Definieer de navigatielinks in een array voor eenvoudig beheer
 const navLinks: NavLink[] = [
-  { href: "/", title: "Home", icon: Home }, // Huis icoon voor home
-  { href: "#skills", title: "Skills", icon: Code }, // Skills icoon
-  { href: "#projects", title: "Projects", icon: FolderOpen }, // Projecten icoon
+  { href: '/', title: 'Home', icon: Home }, // Huis icoon voor home
+  { href: '#skills', title: 'Skills', icon: Code }, // Skills icoon
+  { href: '#projects', title: 'Projects', icon: FolderOpen }, // Projecten icoon
   // Voeg hier meer links toe
 ];
 
@@ -39,22 +39,22 @@ export default function Navbar() {
     <motion.header
       initial={{ y: -100, opacity: 0 }} // Beginpositie: boven het scherm en onzichtbaar
       animate={{ y: 0, opacity: 1 }} // Eindpositie: op de normale positie en volledig zichtbaar
-      transition={{ duration: 0.5, ease: "easeInOut" }} // Timing en easing van de animatie
+      transition={{ duration: 0.5, ease: 'easeInOut' }} // Timing en easing van de animatie
       // Sticky header met een semi-transparante, geblurde achtergrond (glassmorphism)
-      className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60"
+      className="border-border/40 bg-background/95 supports-backdrop-filter:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur"
     >
-      <div className="max-w-5xl mx-auto flex h-14 items-center px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-14 max-w-5xl items-center px-4 sm:px-6 lg:px-8">
         {/* Logo / Branding aan de linkerkant */}
         <div className="mr-auto flex items-center">
           <Link href="/" className="flex items-center gap-2 text-2xl font-bold">
-            <span className="bg-linear-to-r from-primary via-purple-500 to-pink-500 text-transparent bg-clip-text">
+            <span className="bg-linear-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent">
               Hamid Sadim
             </span>
           </Link>
         </div>
 
         {/* Desktop Navigatie: verborgen op mobiel (md:), zichtbaar op desktop */}
-        <nav className="hidden md:flex items-center gap-6 text-sm">
+        <nav className="hidden items-center gap-6 text-sm md:flex">
           <ul className="flex gap-6">
             {navLinks.map((link) => (
               <li key={link.href}>
@@ -81,7 +81,7 @@ export default function Navbar() {
             <SheetContent side="right">
               <Link href="/" className="mr-6 flex items-center gap-2">
                 <span className="font-bold">Hamid</span>
-                <span className="font-bold text-primary">Sadim</span>
+                <span className="text-primary font-bold">Sadim</span>
               </Link>
               <div className="mt-6 flex flex-col gap-4">
                 {navLinks.map((link) => (
@@ -89,25 +89,25 @@ export default function Navbar() {
                     key={link.href}
                     whileHover={{ scale: 1.05, x: 10 }}
                     whileTap={{ scale: 0.95 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 17 }}
                   >
                     <Link
                       href={link.href}
                       onClick={(e) => {
-                        if (link.href.startsWith("#")) {
+                        if (link.href.startsWith('#')) {
                           e.preventDefault();
                           const targetId = link.href.substring(1);
                           const targetElement =
                             document.getElementById(targetId);
                           if (targetElement) {
                             targetElement.scrollIntoView({
-                              behavior: "smooth",
-                              block: "start",
+                              behavior: 'smooth',
+                              block: 'start',
                             });
                           }
                         }
                       }}
-                      className="text-lg font-medium hover:text-primary transition-colors flex items-center gap-2"
+                      className="hover:text-primary flex items-center gap-2 text-lg font-medium transition-colors"
                     >
                       {link.icon && <link.icon className="h-5 w-5" />}
                       {link.title}

@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
+import { motion } from 'framer-motion';
+import { Badge } from '@/components/ui/badge';
 
 // Definieer de structuur van een skill categorie
 export interface SkillCategory {
@@ -48,10 +48,10 @@ export default function Skills({ skills }: SkillsProps) {
       className="container mx-auto px-4 py-16"
       aria-labelledby="skills-heading"
     >
-      <header className="text-center mb-12">
+      <header className="mb-12 text-center">
         <motion.h2
           id="skills-heading"
-          className="text-3xl md:text-4xl font-bold mb-4 bg-linear-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text"
+          className="bg-linear-to-r mb-4 from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-3xl font-bold text-transparent md:text-4xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -59,7 +59,7 @@ export default function Skills({ skills }: SkillsProps) {
           Mijn Vaardigheden
         </motion.h2>
         <motion.p
-          className="text-lg text-muted-foreground max-w-2xl mx-auto"
+          className="text-muted-foreground mx-auto max-w-2xl text-lg"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -74,7 +74,7 @@ export default function Skills({ skills }: SkillsProps) {
         variants={containerVariants}
         initial="hidden"
         animate="show"
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
+        className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
         role="list"
         aria-label="Technische vaardigheden gecategoriseerd"
       >
@@ -82,14 +82,14 @@ export default function Skills({ skills }: SkillsProps) {
           <motion.article
             key={category.title}
             variants={categoryVariants}
-            className="bg-card border rounded-lg p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:border-primary/20"
+            className="bg-card hover:border-primary/20 rounded-lg border p-6 shadow-sm transition-all duration-300 hover:shadow-md"
             role="listitem"
           >
-            <h3 className="text-xl font-semibold mb-4 text-center">
+            <h3 className="mb-4 text-center text-xl font-semibold">
               {category.title}
             </h3>
             <div
-              className="flex flex-wrap gap-2 justify-center"
+              className="flex flex-wrap justify-center gap-2"
               role="list"
               aria-label={`${category.title} vaardigheden`}
             >
@@ -97,7 +97,7 @@ export default function Skills({ skills }: SkillsProps) {
                 <Badge
                   key={skill}
                   variant="secondary"
-                  className="text-sm px-3 py-1 hover:bg-primary hover:text-primary-foreground transition-all duration-200 cursor-default"
+                  className="hover:bg-primary hover:text-primary-foreground cursor-default px-3 py-1 text-sm transition-all duration-200"
                   role="listitem"
                   aria-label={`Vaardigheid: ${skill}`}
                 >

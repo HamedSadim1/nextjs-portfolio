@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
@@ -10,17 +10,17 @@ const prisma = new PrismaClient();
  * Uit te voeren met: npx tsx prisma/migrate-tags.ts
  */
 async function migrateTagsToJson() {
-  console.log("Starting tags migration...");
+  console.log('Starting tags migration...');
 
   // Haal alle projecten op uit de database
   const projects = await prisma.project.findMany();
 
   // Loop door elk project en converteer tags indien nodig
   for (const project of projects) {
-    if (typeof project.tags === "string") {
+    if (typeof project.tags === 'string') {
       // Converteer comma-separated string naar array
       const tagsArray = project.tags
-        .split(",")
+        .split(',')
         .map((tag) => tag.trim())
         .filter((tag) => tag.length > 0);
 
@@ -38,12 +38,12 @@ async function migrateTagsToJson() {
     }
   }
 
-  console.log("Tags migration completed!");
+  console.log('Tags migration completed!');
 }
 
 migrateTagsToJson()
   .catch((e) => {
-    console.error("Migration failed:", e);
+    console.error('Migration failed:', e);
     process.exit(1);
   })
   .finally(async () => {

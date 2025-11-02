@@ -1,42 +1,42 @@
-import { type Project } from "@/components/Card";
-import PageTitle from "@/components/PageTitle";
-import type { Metadata } from "next";
-import { fetchUser } from "@/lib/fetchUser";
-import AnimatedHero from "@/components/AnimatedHero";
-import AnimatedProjectGrid from "@/components/AnimatedProjectGrid";
-import Skills, { type SkillCategory } from "@/components/Skills";
-import { prisma } from "@/lib/prisma";
-import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { type Project } from '@/components/Card';
+import PageTitle from '@/components/PageTitle';
+import type { Metadata } from 'next';
+import { fetchUser } from '@/lib/fetchUser';
+import AnimatedHero from '@/components/AnimatedHero';
+import AnimatedProjectGrid from '@/components/AnimatedProjectGrid';
+import Skills, { type SkillCategory } from '@/components/Skills';
+import { prisma } from '@/lib/prisma';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 // SEO metadata voor de hoofdpagina
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+    process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
   ),
-  title: "Hamid Sadim - Frontend Developer Portfolio",
+  title: 'Hamid Sadim - Frontend Developer Portfolio',
   description:
-    "Welkom op mijn portfolio. Ontdek mijn projecten in React, Next.js en moderne webontwikkeling.",
+    'Welkom op mijn portfolio. Ontdek mijn projecten in React, Next.js en moderne webontwikkeling.',
   keywords: [
-    "frontend developer",
-    "React",
-    "Next.js",
-    "portfolio",
-    "webontwikkeling",
-    "projects",
+    'frontend developer',
+    'React',
+    'Next.js',
+    'portfolio',
+    'webontwikkeling',
+    'projects',
   ],
-  authors: [{ name: "Hamid Sadim" }],
+  authors: [{ name: 'Hamid Sadim' }],
   openGraph: {
-    title: "Hamid Sadim - Portfolio",
+    title: 'Hamid Sadim - Portfolio',
     description:
-      "Frontend developer gespecialiseerd in moderne webtechnologieën. Bekijk mijn projecten en vaardigheden.",
-    type: "website",
-    images: [{ url: "/images/avatar.webp", alt: "Hamid Sadim" }],
+      'Frontend developer gespecialiseerd in moderne webtechnologieën. Bekijk mijn projecten en vaardigheden.',
+    type: 'website',
+    images: [{ url: '/images/avatar.webp', alt: 'Hamid Sadim' }],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Hamid Sadim - Portfolio",
-    description: "Ontdek mijn werk als frontend developer en mijn projecten.",
-    images: ["/images/avatar.webp"],
+    card: 'summary_large_image',
+    title: 'Hamid Sadim - Portfolio',
+    description: 'Ontdek mijn werk als frontend developer en mijn projecten.',
+    images: ['/images/avatar.webp'],
   },
 };
 
@@ -47,7 +47,7 @@ export default async function Home() {
       fetchUser(),
       // Haal projecten op uit database - alleen benodigde velden selecteren voor performance
       prisma.project.findMany({
-        orderBy: { createdAt: "desc" },
+        orderBy: { createdAt: 'desc' },
         take: 6, // Maximaal 6 projecten tonen
         select: {
           id: true,
@@ -61,31 +61,31 @@ export default async function Home() {
       }),
       // Haal vaardigheden op gegroepeerd per categorie
       prisma.skillCategory.findMany({
-        orderBy: { order: "asc" },
+        orderBy: { order: 'asc' },
         include: {
           skills: {
-            orderBy: { name: "asc" },
+            orderBy: { name: 'asc' },
           },
         },
       }),
     ]);
 
     // Extract data from Promise.allSettled results with proper error handling
-    const user = userData.status === "fulfilled" ? userData.value : null;
+    const user = userData.status === 'fulfilled' ? userData.value : null;
     const projectsDataArray =
-      projectsData.status === "fulfilled" ? projectsData.value : [];
+      projectsData.status === 'fulfilled' ? projectsData.value : [];
     const skillsDataArray =
-      skillsData.status === "fulfilled" ? skillsData.value : [];
+      skillsData.status === 'fulfilled' ? skillsData.value : [];
 
     // Log errors for debugging
-    if (userData.status === "rejected") {
-      console.error("Fout bij ophalen gebruikersdata:", userData.reason);
+    if (userData.status === 'rejected') {
+      console.error('Fout bij ophalen gebruikersdata:', userData.reason);
     }
-    if (projectsData.status === "rejected") {
-      console.error("Fout bij ophalen projecten:", projectsData.reason);
+    if (projectsData.status === 'rejected') {
+      console.error('Fout bij ophalen projecten:', projectsData.reason);
     }
-    if (skillsData.status === "rejected") {
-      console.error("Fout bij ophalen vaardigheden:", skillsData.reason);
+    if (skillsData.status === 'rejected') {
+      console.error('Fout bij ophalen vaardigheden:', skillsData.reason);
     }
 
     // Transform database data naar component format
@@ -105,7 +105,7 @@ export default async function Home() {
     }));
 
     return (
-      <main className="min-h-screen bg-linear-to-br from-background via-background to-muted/20">
+      <main className="bg-linear-to-br from-background via-background to-muted/20 min-h-screen">
         {/* Hero Sectie - Introductie en persoonlijke info */}
         <section
           className="flex flex-col items-center px-4 py-12 md:py-20"
@@ -159,9 +159,9 @@ export default async function Home() {
           className="container mx-auto px-4 py-16"
           aria-labelledby="projects-heading"
         >
-          <header className="text-center mb-12">
+          <header className="mb-12 text-center">
             <PageTitle title="My Projects" />
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
+            <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-lg">
               Hier vind je een selectie van mijn recente projecten. Elk project
               toont mijn vaardigheden in moderne webontwikkeling, van responsive
               design tot interactieve gebruikerservaringen. Klik op een project
@@ -170,7 +170,7 @@ export default async function Home() {
           </header>
           <ErrorBoundary
             fallback={
-              <div className="text-center py-12">
+              <div className="py-12 text-center">
                 <p className="text-destructive" role="alert">
                   Kon projecten niet laden.
                 </p>
@@ -180,7 +180,7 @@ export default async function Home() {
             {projects.length > 0 ? (
               <AnimatedProjectGrid projects={projects} />
             ) : (
-              <div className="text-center py-12">
+              <div className="py-12 text-center">
                 <p className="text-muted-foreground">
                   Projecten tijdelijk niet beschikbaar.
                 </p>
@@ -192,11 +192,11 @@ export default async function Home() {
     );
   } catch (error) {
     // Foutafhandeling voor de hele pagina
-    console.error("Kritieke fout bij laden hoofdpagina:", error);
+    console.error('Kritieke fout bij laden hoofdpagina:', error);
     return (
-      <main className="min-h-screen bg-linear-to-br from-background via-background to-muted/20">
+      <main className="bg-linear-to-br from-background via-background to-muted/20 min-h-screen">
         <div className="container mx-auto px-4 py-16 text-center">
-          <h1 className="text-2xl font-bold mb-4">Er is iets misgegaan</h1>
+          <h1 className="mb-4 text-2xl font-bold">Er is iets misgegaan</h1>
           <p className="text-muted-foreground">
             Probeer de pagina te vernieuwen of neem contact op als het probleem
             aanhoudt.

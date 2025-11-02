@@ -179,19 +179,16 @@ Dit project heeft automatische deployment naar Vercel via GitHub Actions.
 #### 📋 Setup Steps
 
 1. **Vercel Account**
-
    - Ga naar [vercel.com](https://vercel.com) en maak een account
    - Verbind je GitHub account
 
 2. **Vercel Token Genereren**
-
    - Ga naar [Vercel Dashboard → Settings → Tokens](https://vercel.com/account/tokens)
    - Klik "Create Token"
    - Geef het een naam (bijv. "portfolio-deploy")
    - Kopieer de token
 
 3. **GitHub Secrets Configureren**
-
    - Ga naar je repository: `github.com/HamedSadim1/nextjs-portfolio`
    - Klik "Settings" → "Secrets and variables" → "Actions"
    - Klik "New repository secret"
@@ -200,7 +197,6 @@ Dit project heeft automatische deployment naar Vercel via GitHub Actions.
    - Klik "Add secret"
 
 4. **Database voor Production**
-
    - Gebruik [Prisma Postgres](https://console.prisma.io) of een andere PostgreSQL database
    - Voeg `DATABASE_URL` toe aan Vercel environment variables
 
@@ -238,13 +234,11 @@ vercel --prod
 **Oplossing:**
 
 1. **Controleer Vercel Project:**
-
    - Ga naar [vercel.com/dashboard](https://vercel.com/dashboard)
    - Zorg dat project `nextjs-portfolio` bestaat
    - Check of GitHub integration actief is
 
 2. **Controleer GitHub Secrets:**
-
    - Ga naar repository **Settings** → **Secrets and variables** → **Actions**
    - Controleer of deze secrets bestaan:
      - `VERCEL_TOKEN`
@@ -252,7 +246,6 @@ vercel --prod
      - `VERCEL_PROJECT_ID`
 
 3. **Vercel Project IDs Verkrijgen:**
-
    - In Vercel dashboard: **Settings** → **General**
    - Kopieer **Project ID** en **Organization ID**
    - Voeg toe aan GitHub secrets
@@ -271,7 +264,6 @@ vercel --prod
 **Oplossing:**
 
 1. **Environment Variables in Vercel:**
-
    - Project **Settings** → **Environment Variables**
    - Voeg toe: `DATABASE_URL`
 

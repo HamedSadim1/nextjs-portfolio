@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
@@ -16,39 +16,39 @@ async function main() {
   const projects = [
     {
       imageUrl:
-        "https://images.unsplash.com/photo-1570649236495-42fa5fe5c48b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      title: "GitHub User Search App",
+        'https://images.unsplash.com/photo-1570649236495-42fa5fe5c48b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      title: 'GitHub User Search App',
       description:
-        "A responsive web application built with Next.js that allows users to search for GitHub profiles and view their repositories and statistics.",
-      liveUrl: "#",
-      tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "GitHub API"],
+        'A responsive web application built with Next.js that allows users to search for GitHub profiles and view their repositories and statistics.',
+      liveUrl: '#',
+      tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'GitHub API'],
     },
     {
       imageUrl:
-        "https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      title: "E-commerce Storefront",
+        'https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      title: 'E-commerce Storefront',
       description:
-        "A full-featured e-commerce front-end with product listings, shopping cart functionality, and a checkout process, styled with shadcn/ui.",
-      liveUrl: "#",
-      tags: ["React", "Vite", "Redux Toolkit", "shadcn/ui"],
+        'A full-featured e-commerce front-end with product listings, shopping cart functionality, and a checkout process, styled with shadcn/ui.',
+      liveUrl: '#',
+      tags: ['React', 'Vite', 'Redux Toolkit', 'shadcn/ui'],
     },
     {
       imageUrl:
-        "https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      title: "Personal Portfolio Website",
+        'https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      title: 'Personal Portfolio Website',
       description:
-        "My personal portfolio to showcase my skills and projects. Designed to be clean, fast, and fully responsive with a built-in theme switcher.",
-      liveUrl: "#",
-      tags: ["Next.js", "Tailwind CSS", "Framer Motion"],
+        'My personal portfolio to showcase my skills and projects. Designed to be clean, fast, and fully responsive with a built-in theme switcher.',
+      liveUrl: '#',
+      tags: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
     },
     {
       imageUrl:
-        "https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      title: "Markdown Blog Platform",
+        'https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      title: 'Markdown Blog Platform',
       description:
-        "A simple and fast blog platform that renders posts from local Markdown files. Includes support for syntax highlighting and dark mode.",
-      liveUrl: "#",
-      tags: ["Next.js", "MDX", "Contentlayer", "TypeScript"],
+        'A simple and fast blog platform that renders posts from local Markdown files. Includes support for syntax highlighting and dark mode.',
+      liveUrl: '#',
+      tags: ['Next.js', 'MDX', 'Contentlayer', 'TypeScript'],
     },
   ];
 
@@ -62,74 +62,74 @@ async function main() {
   // Seed skill categories and skills
   const skillCategories = [
     {
-      title: "Frontend",
+      title: 'Frontend',
       order: 1,
       skills: [
-        "React",
-        "Next.js",
-        "TypeScript",
-        "JavaScript",
-        "HTML5",
-        "CSS3",
-        "Tailwind CSS",
+        'React',
+        'Next.js',
+        'TypeScript',
+        'JavaScript',
+        'HTML5',
+        'CSS3',
+        'Tailwind CSS',
       ],
     },
     {
-      title: "Backend",
+      title: 'Backend',
       order: 2,
       skills: [
-        "Node.js",
-        "Express",
-        "Prisma",
-        "PostgreSQL",
-        "REST APIs",
-        "GraphQL",
+        'Node.js',
+        'Express',
+        'Prisma',
+        'PostgreSQL',
+        'REST APIs',
+        'GraphQL',
       ],
     },
     {
-      title: "Tools & Technologies",
+      title: 'Tools & Technologies',
       order: 3,
       skills: [
-        "Git",
-        "VS Code",
-        "Figma",
-        "Postman",
-        "Docker",
-        "Vercel",
-        "npm/yarn",
+        'Git',
+        'VS Code',
+        'Figma',
+        'Postman',
+        'Docker',
+        'Vercel',
+        'npm/yarn',
       ],
     },
     {
-      title: "Frameworks & Libraries",
+      title: 'Frameworks & Libraries',
       order: 4,
       skills: [
-        "Framer Motion",
-        "shadcn/ui",
-        "React Hook Form",
-        "Zustand",
-        "Axios",
+        'Framer Motion',
+        'shadcn/ui',
+        'React Hook Form',
+        'Zustand',
+        'Axios',
       ],
     },
     {
-      title: "Development Practices",
+      title: 'Development Practices',
       order: 5,
       skills: [
-        "Responsive Design",
-        "Accessibility",
-        "Performance Optimization",
-        "Testing",
-        "CI/CD",
+        'Responsive Design',
+        'Accessibility',
+        'Performance Optimization',
+        'Testing',
+        'CI/CD',
       ],
     },
     {
-      title: "Soft Skills",
+      title: 'Soft Skills',
       order: 6,
       skills: [
-        "Problem Solving",
-        "Team Collaboration",
-        "Agile/Scrum",
-        "Communication",
-        "Learning",
+        'Problem Solving',
+        'Team Collaboration',
+        'Agile/Scrum',
+        'Communication',
+        'Learning',
       ],
     },
   ];
@@ -153,7 +153,7 @@ async function main() {
     }
   }
 
-  console.log("Database succesvol gevuld met projecten en skills");
+  console.log('Database succesvol gevuld met projecten en skills');
 }
 
 main()

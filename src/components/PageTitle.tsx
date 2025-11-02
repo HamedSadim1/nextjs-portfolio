@@ -12,7 +12,7 @@ const PageTitle = ({ title }: Props) => {
   return (
     <div>
       {/* De h1 is het belangrijkste kop-element op de pagina, gestyled met een gradient */}
-      <h1 className="text-6xl font-bold pb-5 border-b bg-linear-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
+      <h1 className="bg-linear-to-r border-b from-blue-500 via-purple-500 to-pink-500 bg-clip-text pb-5 text-6xl font-bold text-transparent">
         {title}
       </h1>
     </div>

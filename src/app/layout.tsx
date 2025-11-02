@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import './globals.css';
 
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import { ThemeProvider } from "@/components/Provider/Provider";
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import { ThemeProvider } from '@/components/Provider/Provider';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "Portfolio",
+  title: 'Portfolio',
   description: "Hamid Sadim's Portfolio",
 };
 
@@ -33,11 +33,11 @@ export default function RootLayout({
           disableTransitionOnChange // Voorkomt flikkeren bij het wisselen van thema
         >
           {/* Dit is de hoofdcontainer voor de layout, een flex-kolom die minstens de volledige schermhoogte inneemt */}
-          <div className="flex flex-col min-h-screen">
+          <div className="flex min-h-screen flex-col">
             {/* De navigatiebalk bovenaan de pagina */}
             <Navbar />
             {/* Het hoofdgedeelte van de inhoud van de pagina. Flex-grow zorgt ervoor dat het de resterende hoogte opvult. */}
-            <main className="grow max-w-7xl mx-auto pt-4 px-4 sm:px-6 lg:px-8 w-full">
+            <main className="mx-auto w-full max-w-7xl grow px-4 pt-4 sm:px-6 lg:px-8">
               {children}
             </main>
             {/* Footer component met copyright en credits */}

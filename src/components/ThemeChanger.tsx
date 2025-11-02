@@ -1,9 +1,9 @@
-"use client";
-import { useTheme } from "next-themes";
-import { useAutoAnimate } from "@formkit/auto-animate/react";
-import { useEffect, useState } from "react";
-import SunIcon from "./Icons/SunIcons";
-import MoonIcon from "./Icons/MoonIcon";
+'use client';
+import { useTheme } from 'next-themes';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
+import { useEffect, useState } from 'react';
+import SunIcon from './Icons/SunIcons';
+import MoonIcon from './Icons/MoonIcon';
 
 /**
  * ThemeChanger component voor het wisselen tussen licht en donker thema.
@@ -26,13 +26,13 @@ export default function ThemeChanger() {
   return (
     <button
       ref={animationParent}
-      className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 w-9"
-      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+      className="ring-offset-background focus-visible:ring-ring border-input bg-background hover:bg-accent hover:text-accent-foreground inline-flex h-9 w-9 items-center justify-center rounded-md border text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+      onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
       aria-label={`Schakel naar ${
-        resolvedTheme === "dark" ? "licht" : "donker"
+        resolvedTheme === 'dark' ? 'licht' : 'donker'
       } thema`}
     >
-      {resolvedTheme === "dark" ? <SunIcon /> : <MoonIcon />}
+      {resolvedTheme === 'dark' ? <SunIcon /> : <MoonIcon />}
     </button>
   );
 }

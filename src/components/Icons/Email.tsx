@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 // Dit is een SVG-icoon component. Het is aangepast om props (zoals className) te accepteren,
 // zodat de styling (grootte, kleur, etc.) flexibel kan worden aangepast met Tailwind CSS.
