@@ -41,22 +41,46 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
     steps:
+      - name: Check Vercel secrets
+        id: check-secrets
+        run: |
+          if [ -z "$VERCEL_TOKEN" ]; then
+            echo "❌ Vercel secrets not configured - skipping deployment"
+            echo "skip_deployment=true" >> $GITHUB_OUTPUT
+          else
+            echo "✅ Vercel secrets found - proceeding with deployment"
+            echo "skip_deployment=false" >> $GITHUB_OUTPUT
+          fi
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
+      - name: Skip deployment notice
+        if: steps.check-secrets.outputs.skip_deployment == 'true'
+        run: |
+          echo "🚫 Deployment skipped - configure Vercel secrets to enable automatic deployment"
+          echo "See README.md for setup instructions"
+
       - name: Checkout code
+        if: steps.check-secrets.outputs.skip_deployment == 'false'
         uses: actions/checkout@v4
 
       - name: Setup Node.js
+        if: steps.check-secrets.outputs.skip_deployment == 'false'
         uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: "npm"
 
       - name: Install dependencies
+        if: steps.check-secrets.outputs.skip_deployment == 'false'
         run: npm ci
 
       - name: Install Vercel CLI
+        if: steps.check-secrets.outputs.skip_deployment == 'false'
         run: npm install -g vercel
 
       - name: Deploy to Vercel
+        if: steps.check-secrets.outputs.skip_deployment == 'false'
         run: |
           echo "🚀 Starting Vercel deployment..."
           vercel --prod --yes --token=${{ secrets.VERCEL_TOKEN }}

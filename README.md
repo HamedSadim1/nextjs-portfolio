@@ -237,11 +237,13 @@ vercel --prod
 **Oplossing:**
 
 1. **Controleer Vercel Project:**
+
    - Ga naar [vercel.com/dashboard](https://vercel.com/dashboard)
    - Zorg dat project `nextjs-portfolio` bestaat
    - Check of GitHub integration actief is
 
 2. **Controleer GitHub Secrets:**
+
    - Ga naar repository **Settings** → **Secrets and variables** → **Actions**
    - Controleer of deze secrets bestaan:
      - `VERCEL_TOKEN`
@@ -249,6 +251,7 @@ vercel --prod
      - `VERCEL_PROJECT_ID`
 
 3. **Vercel Project IDs Verkrijgen:**
+
    - In Vercel dashboard: **Settings** → **General**
    - Kopieer **Project ID** en **Organization ID**
    - Voeg toe aan GitHub secrets
@@ -267,6 +270,7 @@ vercel --prod
 **Oplossing:**
 
 1. **Environment Variables in Vercel:**
+
    - Project **Settings** → **Environment Variables**
    - Voeg toe: `DATABASE_URL`
 
