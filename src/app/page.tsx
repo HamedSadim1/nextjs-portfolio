@@ -1,4 +1,3 @@
-import HeroSection from "@/components/HeroSection";
 import { type Project } from "@/components/Card";
 import PageTitle from "@/components/PageTitle";
 import type { Metadata } from "next";

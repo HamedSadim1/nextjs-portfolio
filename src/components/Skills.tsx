@@ -78,7 +78,7 @@ export default function Skills({ skills }: SkillsProps) {
         role="list"
         aria-label="Technische vaardigheden gecategoriseerd"
       >
-        {skills.map((category, index) => (
+        {skills.map((category) => (
           <motion.article
             key={category.title}
             variants={categoryVariants}

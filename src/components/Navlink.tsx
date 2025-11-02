@@ -2,9 +2,8 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { cn } from "@/app/utils"; // Utility functie om classNames conditioneel samen te voegen
+import { cn } from "@/lib/utils"; // Utility functie om classNames conditioneel samen te voegen
 import { motion } from "framer-motion"; // Voor click animaties
-import { useRouter } from "next/navigation"; // Voor programmatic navigation
 
 // Definieer de props voor de Navlink component
 interface NavlinkProps {
@@ -23,7 +22,6 @@ interface NavlinkProps {
 const Navlink = ({ href, title, icon: Icon }: NavlinkProps) => {
   // Haal het huidige URL-pad op
   const pathName = usePathname();
-  const router = useRouter();
 
   // Bepaal of deze link de actieve link is
   const isActive = pathName === href;

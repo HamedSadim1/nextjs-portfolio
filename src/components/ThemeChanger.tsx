@@ -12,7 +12,7 @@ import MoonIcon from "./Icons/MoonIcon";
  * Voorkomt hydration mismatch door alleen te renderen na mounting.
  */
 export default function ThemeChanger() {
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
   const [animationParent] = useAutoAnimate();
 
   const [mounted, setMounted] = useState(false);
@@ -20,18 +20,19 @@ export default function ThemeChanger() {
   useEffect(() => setMounted(true), []);
 
   if (!mounted) {
-    return null;
+    return null; // Voorkom hydration mismatch
   }
 
   return (
-    <div>
-      <button
-        ref={animationParent}
-        className="text-xl text-green-300 bg-green-200/30 p-2 rounded-md"
-        onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-      >
-        {theme === "dark" ? <SunIcon /> : <MoonIcon />}
-      </button>
-    </div>
+    <button
+      ref={animationParent}
+      className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 w-9"
+      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+      aria-label={`Schakel naar ${
+        resolvedTheme === "dark" ? "licht" : "donker"
+      } thema`}
+    >
+      {resolvedTheme === "dark" ? <SunIcon /> : <MoonIcon />}
+    </button>
   );
 }

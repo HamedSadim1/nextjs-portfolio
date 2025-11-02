@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/Provider/Provider";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -39,17 +40,8 @@ export default function RootLayout({
             <main className="grow max-w-7xl mx-auto pt-4 px-4 sm:px-6 lg:px-8 w-full">
               {children}
             </main>
-            {/* Footer sectie */}
-            <footer className="border-t border-border/40 bg-muted/30 mt-16">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                <div className="text-center text-sm text-muted-foreground">
-                  <p>&copy; 2025 Hamid Sadim. Alle rechten voorbehouden.</p>
-                  <p className="mt-2">
-                    Gemaakt met ❤️ met Next.js, Tailwind CSS en Prisma
-                  </p>
-                </div>
-              </div>
-            </footer>
+            {/* Footer component met copyright en credits */}
+            <Footer />
           </div>
         </ThemeProvider>
       </body>

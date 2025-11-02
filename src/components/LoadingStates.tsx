@@ -1,5 +1,10 @@
 import { Skeleton } from "@/components/ui/skeleton";
 
+/**
+ * Skeleton component voor het laden van de project grid.
+ * Toont 6 placeholder kaarten met afbeeldingen, titels, beschrijvingen en tags.
+ * Gebruikt shadcn/ui Skeleton component voor consistente styling.
+ */
 export function ProjectGridSkeleton() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -22,6 +27,11 @@ export function ProjectGridSkeleton() {
   );
 }
 
+/**
+ * Skeleton component voor het laden van de hero sectie.
+ * Toont placeholders voor avatar, naam, bio, social links, beschrijving en CTA knoppen.
+ * Matcht de layout van de echte HeroSection component.
+ */
 export function HeroSkeleton() {
   return (
     <div className="w-full max-w-5xl flex flex-col lg:flex-row items-center justify-center gap-12 py-12 lg:py-28">

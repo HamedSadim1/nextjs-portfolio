@@ -2,7 +2,17 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+/**
+ * Seed script om de database te vullen met voorbeeld projecten en skills.
+ * Voert de volgende acties uit:
+ * 1. Creëert voorbeeld projecten met afbeeldingen, titels, beschrijvingen en tags
+ * 2. Creëert skill categorieën met bijbehorende skills
+ * 3. Koppelt skills aan hun categorieën
+ *
+ * Uit te voeren met: npx prisma db seed
+ */
 async function main() {
+  // Voorbeeld projecten data
   const projects = [
     {
       imageUrl:
@@ -42,6 +52,7 @@ async function main() {
     },
   ];
 
+  // Creëer projecten in de database
   for (const project of projects) {
     await prisma.project.create({
       data: project,
@@ -123,6 +134,7 @@ async function main() {
     },
   ];
 
+  // Creëer skill categorieën en hun bijbehorende skills
   for (const categoryData of skillCategories) {
     const category = await prisma.skillCategory.create({
       data: {
@@ -141,7 +153,7 @@ async function main() {
     }
   }
 
-  console.log("Seeded projects and user");
+  console.log("Database succesvol gevuld met projecten en skills");
 }
 
 main()
