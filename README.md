@@ -1,5 +1,6 @@
 # 🚀 Hamid Sadim - Portfolio Website
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Visit-blue?style=for-the-badge&logo=vercel)](https://hamedsadim-portfolio.vercel.app/)
 [![Next.js](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3-38B2AC)](https://tailwindcss.com/)
@@ -8,7 +9,7 @@
 
 Een moderne, volledig responsive portfolio website gebouwd met Next.js 16, Tailwind CSS en Prisma. Toont projecten, vaardigheden en persoonlijke informatie op een professionele en visueel aantrekkelijke manier.
 
-![Portfolio Preview](./public/images/utkarsh-img.webp)
+![Portfolio Preview](./public/images/avatar.webp)
 
 ## ✨ Features
 
@@ -206,13 +207,13 @@ Dit project heeft automatische deployment naar Vercel via GitHub Actions.
 5. **Automatische Deployment**
    - Elke push naar `main` branch triggert automatische deployment
    - Check de "Actions" tab op GitHub voor deployment status
-   - Je live site: `https://nextjs-portfolio-[random].vercel.app`
+   - Je live site: [https://hamedsadim-portfolio.vercel.app/](https://hamedsadim-portfolio.vercel.app/)
 
 #### 🔧 Environment Variables in Vercel
 
 ```env
 DATABASE_URL=postgresql://...
-NEXT_PUBLIC_SITE_URL=https://jouw-portfolio.vercel.app
+NEXT_PUBLIC_SITE_URL=https://hamedsadim-portfolio.vercel.app
 ```
 
 ### Manual Vercel Deployment

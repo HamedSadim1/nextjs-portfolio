@@ -39,7 +39,10 @@ interface HeroSectionProps {
  */
 export default function HeroSection({ user }: HeroSectionProps) {
   return (
-    <section className="w-full max-w-5xl flex flex-col lg:flex-row items-center justify-center gap-12 py-12 lg:py-28">
+    <section
+      className="w-full max-w-5xl flex flex-col lg:flex-row items-center justify-center gap-12 py-12 lg:py-28"
+      aria-labelledby="hero-heading"
+    >
       {/* Linker Sectie: Avatar, Naam, Bio, Socials */}
       <motion.div
         className="flex flex-col gap-4 items-center text-center lg:w-1/3"
@@ -47,7 +50,7 @@ export default function HeroSection({ user }: HeroSectionProps) {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <Avatar className="w-48 h-48 border-4 border-primary/10">
+        <Avatar className="w-48 h-48 border-4 border-primary/10 shadow-lg">
           <AvatarImage
             src={
               typeof user.avatarUrl === "string"
@@ -57,12 +60,17 @@ export default function HeroSection({ user }: HeroSectionProps) {
             alt={user.name}
           />
           {/* Fallback voor als de afbeelding niet laadt, toont de eerste letter van de naam */}
-          <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+          <AvatarFallback className="text-2xl font-bold">
+            {user.name.charAt(0)}
+          </AvatarFallback>
         </Avatar>
-        <h2 className="text-3xl font-bold tracking-tight bg-linear-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
+        <h1
+          id="hero-heading"
+          className="text-3xl font-bold tracking-tight bg-linear-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text"
+        >
           {user.name}
-        </h2>
-        <p className="text-muted-foreground">{user.bio}</p>
+        </h1>
+        <p className="text-muted-foreground text-lg font-medium">{user.bio}</p>
         <div className="flex gap-2 items-center">
           {/* Map over de social media links en render een icoon-knop voor elke link */}
           {user.socials.map((social) => {
@@ -136,11 +144,28 @@ export default function HeroSection({ user }: HeroSectionProps) {
                 size="lg"
                 className="bg-background hover:bg-accent w-full"
               >
-                <Link href="mailto:your-email@example.com">
+                <Link href="mailto:hamid.sadim@outlook.com">
                   Neem Contact Op
                 </Link>
               </Button>
             </div>
+          </motion.div>
+          {/* Download CV knop */}
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Button
+              asChild
+              variant="secondary"
+              size="lg"
+              className="hover:bg-secondary/80 w-full"
+            >
+              <Link
+                href="/cv-hamid-sadim.pdf"
+                download="CV_Hamid_Sadim.pdf"
+                aria-label="Download mijn CV"
+              >
+                📄 Download CV
+              </Link>
+            </Button>
           </motion.div>
         </div>
       </motion.div>

@@ -21,7 +21,7 @@ export async function fetchUser() {
   // Fallback to mock data if no user in DB or error
   return {
     name: "Hamid Sadim",
-    avatarUrl: "/images/utkarsh-img.webp",
+    avatarUrl: "/images/avatar.webp",
     bio: "Hey, mijn naam is Hamid Sadim en ik ben een Frontend Developer.",
     description: [
       "Welkom op mijn portfolio! Ik ben een veelzijdige frontend developer gespecialiseerd in het creëren van boeiende en responsieve webapplicaties. Ik heb een passie voor het bouwen van intuïtieve en gebruiksvriendelijke interfaces die de algehele gebruikerservaring verbeteren.",
@@ -33,7 +33,7 @@ export async function fetchUser() {
         name: "linkedin" as const,
         url: "https://linkedin.com/in/your-profile",
       },
-      { name: "email" as const, url: "mailto:your-email@example.com" },
+      { name: "email" as const, url: "mailto:hamid.sadim@outlook.com" },
     ],
   };
 }
