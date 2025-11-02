@@ -1,15 +1,13 @@
 import React from "react";
 
-const GithubIcon: React.FC = () => {
+const GithubIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
-      width="30px"
-      height="30px"
+      {...props}
       viewBox="0 0 20 20"
-      version="1.1"
       xmlns="http://www.w3.org/2000/svg"
-      fill="#1A6836"
-      stroke="#1A6836"
+      fill="currentColor"
+      stroke="currentColor"
     >
       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
       <g
@@ -18,9 +16,6 @@ const GithubIcon: React.FC = () => {
         strokeLinejoin="round"
       ></g>
       <g id="SVGRepo_iconCarrier">
-        {" "}
-        <title>github [#14b8a6]</title> <desc>Created with Sketch.</desc>{" "}
-        <defs> </defs>{" "}
         <g
           id="Page-1"
           stroke="none"
@@ -31,7 +26,7 @@ const GithubIcon: React.FC = () => {
           <g
             id="Dribbble-Light-Preview"
             transform="translate(-140.000000, -7559.000000)"
-            fill="#1A6836 "
+            fill="currentColor"
           >
             <g id="icons" transform="translate(56.000000, 160.000000)">
               <path

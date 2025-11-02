@@ -1,51 +1,65 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { ExternalLink } from "lucide-react";
 
-const Card = () => {
+// Define the shape of our project data
+export interface Project {
+  imageUrl: string;
+  title: string;
+  description: string;
+  liveUrl: string;
+  tags: string[];
+}
+
+interface ProjectCardProps {
+  project: Project;
+}
+
+const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
-    <div className="border flex flex-col w-[300px] shadow-[0_20px_50px_rgba(8,112,184,0.7)] rounded-md overflow-hidden ">
-      <div className="h-[244px]  border relative">
-        <Image
-          src="https://images.unsplash.com/photo-1570649236495-42fa5fe5c48b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="project-Image"
-          width={400}
-          height={400}
-          className="w-full h-full object-cover"
-        />
-      </div>
-      <div className="flex flex-col w-fit p-4 gap-4">
-        <h2 className="font-semibold text-xl">
-          Build GitHub User Search App With Next.js | Dark Mode #reactjs #nextjs
-          #github
-        </h2>
-        <p className="text-gray-400">
-          React SPA with Redux React SPA with Redux
-        </p>
-        <div>
-          <Link
-            href=""
-            target="_blank"
-            className="flex gap-2 border w-fit p-1 px-3 hover:opacity-60"
-          >
-            Live Demo
-          </Link>
-        </div>
-
-        {/* technologies that i used in my project */}
-
-        <div className="flex flex-wrap gap-2">
-          <span className="text-sm text-gray-400 p-2 bg-slate-950 rounded-lg ">
-            React
-          </span>
-          <span className="text-sm text-gray-400">Redux</span>
-          <span className="text-sm text-gray-400">Next.js</span>
-          <span className="text-sm text-gray-400">TypeScript</span>
-          <span className="text-sm text-gray-400">Tailwind CSS</span>
-        </div>
-      </div>
+    <div className="group rounded-lg p-0.5 bg-gradient-to-r from-transparent via-border/40 to-transparent hover:from-primary/20 hover:via-border hover:to-primary/20 transition-all duration-300">
+      <Card className="flex flex-col overflow-hidden h-full border-none transition-all duration-300 transform hover:-translate-y-2">
+        <CardHeader className="p-0">
+          <div className="aspect-video overflow-hidden relative">
+            <Image
+              src={project.imageUrl}
+              alt={project.title}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <ExternalLink className="w-10 h-10 text-white" />
+            </div>
+          </div>
+        </CardHeader>
+        <CardContent className="flex-grow p-4 flex flex-col gap-2">
+          <CardTitle className="text-xl font-semibold line-clamp-2">
+            {project.title}
+          </CardTitle>
+          <p className="text-muted-foreground flex-grow line-clamp-3">
+            {project.description}
+          </p>
+          <div className="flex flex-wrap gap-2 pt-2">
+            {project.tags.map((tag) => (
+              <Badge key={tag} variant="secondary">
+                {tag}
+              </Badge>
+            ))}
+          </div>
+        </CardContent>
+        <CardFooter className="p-4 pt-0">
+          <Button asChild className="w-full">
+            <Link href={project.liveUrl} target="_blank">
+              Live Demo
+            </Link>
+          </Button>
+        </CardFooter>
+      </Card>
     </div>
   );
 };
 
-export default Card;
+export default ProjectCard;

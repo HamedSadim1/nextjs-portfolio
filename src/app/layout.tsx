@@ -19,17 +19,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
+      <body
+        className={`${inter.className} bg-background text-foreground antialiased`}
       >
-        <body className={`${inter} w-full h max-h-screen items-start px-2`}>
-          <Navbar />
-          <div className="max-w-5xl mx-auto pt-4 ">{children}</div>
-        </body>
-      </ThemeProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="flex flex-col min-h-screen">
+            <Navbar />
+            <main className="flex-grow max-w-5xl mx-auto pt-4 px-4 sm:px-6 lg:px-8 w-full">
+              {children}
+            </main>
+            {/* A footer could easily be added here */}
+          </div>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
