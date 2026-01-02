@@ -21,8 +21,8 @@ async function migrateTagsToJson() {
       // Converteer comma-separated string naar array
       const tagsArray = project.tags
         .split(',')
-        .map((tag) => tag.trim())
-        .filter((tag) => tag.length > 0);
+        .map((tag: string) => tag.trim())
+        .filter((tag: string) => tag.length > 0);
 
       // Update het project met de nieuwe tags array
       await prisma.project.update({
