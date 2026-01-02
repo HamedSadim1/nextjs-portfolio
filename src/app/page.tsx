@@ -80,13 +80,15 @@ export default async function Home() {
     // Handle errors silently in production - errors are handled by fallback UI
 
     // Transform database data naar component format
-    const skills: SkillCategory[] = skillsDataArray.map((category: any) => ({ // eslint-disable-line @typescript-eslint/no-explicit-any
+    const skills: SkillCategory[] = skillsDataArray.map((category: any) => ({
+      // eslint-disable-line @typescript-eslint/no-explicit-any
       title: category.title,
       skills: category.skills.map((skill: any) => skill.name), // eslint-disable-line @typescript-eslint/no-explicit-any
     }));
 
     // Transform projecten - tags zijn al arrays dankzij JSON opslag in database
-    const projects: Project[] = projectsDataArray.map((p: any) => ({ // eslint-disable-line @typescript-eslint/no-explicit-any
+    const projects: Project[] = projectsDataArray.map((p: any) => ({
+      // eslint-disable-line @typescript-eslint/no-explicit-any
       id: p.id,
       title: p.title,
       description: p.description,
