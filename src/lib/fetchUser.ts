@@ -14,8 +14,8 @@ export async function fetchUser() {
         }[],
       };
     }
-  } catch (error) {
-    console.warn('Prisma user fetch failed, using mock data:', error);
+  } catch {
+    // Prisma user fetch failed, falling back to mock data
   }
 
   // Fallback to mock data if no user in DB or error

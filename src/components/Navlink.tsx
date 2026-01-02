@@ -51,7 +51,17 @@ const Navlink = ({ href, title, icon: Icon }: NavlinkProps) => {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLAnchorElement>) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      handleClick(e as any);
+      // Simulate click for keyboard navigation
+      const targetId = href.substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.focus({ preventScroll: true });
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+        window.history.pushState(null, '', href);
+      }
     }
   };
 

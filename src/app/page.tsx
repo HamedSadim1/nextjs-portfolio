@@ -77,16 +77,7 @@ export default async function Home() {
     const skillsDataArray =
       skillsData.status === 'fulfilled' ? skillsData.value : [];
 
-    // Log errors for debugging
-    if (userData.status === 'rejected') {
-      console.error('Fout bij ophalen gebruikersdata:', userData.reason);
-    }
-    if (projectsData.status === 'rejected') {
-      console.error('Fout bij ophalen projecten:', projectsData.reason);
-    }
-    if (skillsData.status === 'rejected') {
-      console.error('Fout bij ophalen vaardigheden:', skillsData.reason);
-    }
+    // Handle errors silently in production - errors are handled by fallback UI
 
     // Transform database data naar component format
     const skills: SkillCategory[] = skillsDataArray.map((category) => ({
@@ -190,9 +181,8 @@ export default async function Home() {
         </section>
       </main>
     );
-  } catch (error) {
-    // Foutafhandeling voor de hele pagina
-    console.error('Kritieke fout bij laden hoofdpagina:', error);
+  } catch {
+    // Foutafhandeling voor de hele pagina - error logging removed for production
     return (
       <main className="min-h-screen">
         <div className="container mx-auto px-4 py-16 text-center">

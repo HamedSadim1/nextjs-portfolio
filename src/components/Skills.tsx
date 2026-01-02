@@ -82,7 +82,7 @@ export default function Skills({ skills }: SkillsProps) {
           <motion.article
             key={category.title}
             variants={categoryVariants}
-            className="glass hover:border-primary/20 rounded-lg p-6 shadow-sm transition-all duration-300 hover:shadow-md overflow-hidden"
+            className="glass hover:border-primary/20 overflow-hidden rounded-lg p-6 shadow-sm transition-all duration-300 hover:shadow-md"
             role="listitem"
           >
             <h3 className="mb-4 text-center text-xl font-semibold">
