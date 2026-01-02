@@ -7,6 +7,17 @@ import AnimatedProjectGrid from '@/components/AnimatedProjectGrid';
 import Skills, { type SkillCategory } from '@/components/Skills';
 import { prisma } from '@/lib/prisma';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
+import type {
+  SkillCategory as PrismaSkillCategory,
+  Skill,
+  Project as PrismaProject,
+} from '@prisma/client';
+
+// Type for selected project fields from database query
+type SelectedProject = Pick<
+  PrismaProject,
+  'id' | 'title' | 'description' | 'imageUrl' | 'liveUrl' | 'tags' | 'createdAt'
+>;
 
 // SEO metadata voor de hoofdpagina
 export const metadata: Metadata = {
@@ -72,23 +83,21 @@ export default async function Home() {
 
     // Extract data from Promise.allSettled results with proper error handling
     const user = userData.status === 'fulfilled' ? userData.value : null;
-    const projectsDataArray =
+    const projectsDataArray: SelectedProject[] =
       projectsData.status === 'fulfilled' ? projectsData.value : [];
-    const skillsDataArray =
+    const skillsDataArray: (PrismaSkillCategory & { skills: Skill[] })[] =
       skillsData.status === 'fulfilled' ? skillsData.value : [];
 
     // Handle errors silently in production - errors are handled by fallback UI
 
     // Transform database data naar component format
-    const skills: SkillCategory[] = skillsDataArray.map((category: any) => ({
-      // eslint-disable-line @typescript-eslint/no-explicit-any
+    const skills: SkillCategory[] = skillsDataArray.map((category) => ({
       title: category.title,
-      skills: category.skills.map((skill: any) => skill.name), // eslint-disable-line @typescript-eslint/no-explicit-any
+      skills: category.skills.map((skill) => skill.name),
     }));
 
     // Transform projecten - tags zijn al arrays dankzij JSON opslag in database
-    const projects: Project[] = projectsDataArray.map((p: any) => ({
-      // eslint-disable-line @typescript-eslint/no-explicit-any
+    const projects: Project[] = projectsDataArray.map((p) => ({
       id: p.id,
       title: p.title,
       description: p.description,
