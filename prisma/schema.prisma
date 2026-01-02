@@ -2,12 +2,12 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider   = "prisma-client-js"
+  engineType = "library"
 }
 
 datasource db {
   provider = "sqlite"
-  url      = env("DATABASE_URL")
 }
 
 model Project {
@@ -16,7 +16,7 @@ model Project {
   title       String
   description String
   liveUrl     String
-  tags        Json     // JSON array voor tags - beter voor query performance en type safety
+  tags        Json // JSON array voor tags - beter voor query performance en type safety
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
@@ -28,29 +28,29 @@ model User {
   name        String
   avatarUrl   String
   bio         String
-  description Json     // JSON array voor descriptions
-  socials     Json     // JSON voor social links
+  description Json // JSON array voor descriptions
+  socials     Json // JSON voor social links
   createdAt   DateTime @default(now())
 }
 
 model SkillCategory {
-  id          String   @id @default(cuid())
-  title       String
-  order       Int      // Voor sortering van categorieën
-  skills      Skill[]
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id        String   @id @default(cuid())
+  title     String
+  order     Int // Voor sortering van categorieën
+  skills    Skill[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@map("skill_categories")
 }
 
 model Skill {
-  id          String        @id @default(cuid())
-  name        String
-  category    SkillCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  categoryId  String
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
+  id         String        @id @default(cuid())
+  name       String
+  category   SkillCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  categoryId String
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
 
   @@map("skills")
 }

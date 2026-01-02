@@ -45,8 +45,10 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
       <DialogTrigger asChild>
         {/* De buitenste div creëert de gradient rand en beheert het hover-effect voor de groep */}
         <div className="bg-linear-to-r via-border/40 hover:from-primary/20 hover:via-border hover:to-primary/20 group cursor-pointer rounded-lg from-transparent to-transparent p-0.5 transition-all duration-300">
-          {/* De Card component van shadcn/ui vormt de basis. h-full zorgt ervoor dat alle kaarten in een grid dezelfde hoogte hebben. */}
-          <Card className="flex h-full transform flex-col overflow-hidden border-none transition-all duration-300 hover:-translate-y-2 hover:shadow-lg">
+          {/* Glass panel wrapper */}
+          <div className="glass rounded-lg p-1 overflow-hidden">
+            {/* De Card component van shadcn/ui vormt de basis. h-full zorgt ervoor dat alle kaarten in een grid dezelfde hoogte hebben. */}
+            <Card className="flex h-full transform flex-col overflow-hidden border-none bg-transparent transition-all duration-300 hover:-translate-y-2 hover:shadow-lg">
             <CardHeader className="p-0">
               {/* Container voor de afbeelding met een vaste aspect ratio */}
               <div className="relative aspect-video overflow-hidden">
@@ -85,12 +87,14 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
                 >
                   Live Demo
                 </Link>
               </Button>
             </CardFooter>
-          </Card>
+            </Card>
+          </div>
         </div>
       </DialogTrigger>
       <DialogContent className="max-w-2xl">
@@ -125,6 +129,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
               >
                 <ExternalLink className="mr-2 h-4 w-4" />
                 Live Demo

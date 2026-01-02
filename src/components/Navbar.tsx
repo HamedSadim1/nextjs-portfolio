@@ -41,7 +41,7 @@ export default function Navbar() {
       animate={{ y: 0, opacity: 1 }} // Eindpositie: op de normale positie en volledig zichtbaar
       transition={{ duration: 0.5, ease: 'easeInOut' }} // Timing en easing van de animatie
       // Sticky header met een semi-transparante, geblurde achtergrond (glassmorphism)
-      className="border-border/40 bg-background/95 supports-backdrop-filter:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur"
+      className="glass sticky top-0 z-50 w-full max-w-7xl mx-auto rounded-b-2xl border-b-0 border-t-0 px-4 mt-4 mb-8"
     >
       <div className="mx-auto flex h-14 max-w-5xl items-center px-4 sm:px-6 lg:px-8">
         {/* Logo / Branding aan de linkerkant */}

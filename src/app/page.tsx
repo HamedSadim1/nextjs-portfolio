@@ -105,7 +105,7 @@ export default async function Home() {
     }));
 
     return (
-      <main className="bg-linear-to-br from-background via-background to-muted/20 min-h-screen">
+      <main className="min-h-screen">
         {/* Hero Sectie - Introductie en persoonlijke info */}
         <section
           className="flex flex-col items-center px-4 py-12 md:py-20"
@@ -194,7 +194,7 @@ export default async function Home() {
     // Foutafhandeling voor de hele pagina
     console.error('Kritieke fout bij laden hoofdpagina:', error);
     return (
-      <main className="bg-linear-to-br from-background via-background to-muted/20 min-h-screen">
+      <main className="min-h-screen">
         <div className="container mx-auto px-4 py-16 text-center">
           <h1 className="mb-4 text-2xl font-bold">Er is iets misgegaan</h1>
           <p className="text-muted-foreground">

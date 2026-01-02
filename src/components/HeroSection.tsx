@@ -40,7 +40,7 @@ interface HeroSectionProps {
 export default function HeroSection({ user }: HeroSectionProps) {
   return (
     <section
-      className="flex w-full max-w-5xl flex-col items-center justify-center gap-12 py-12 lg:flex-row lg:py-28"
+      className="glass flex w-full max-w-5xl flex-col items-center justify-center gap-12 rounded-2xl py-12 px-8 md:px-12 lg:flex-row lg:py-28 overflow-hidden"
       aria-labelledby="hero-heading"
     >
       {/* Linker Sectie: Avatar, Naam, Bio, Socials */}

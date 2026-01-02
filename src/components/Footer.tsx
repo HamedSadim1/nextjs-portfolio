@@ -43,12 +43,12 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative mt-16 overflow-hidden">
+    <footer className="relative mt-16">
       {/* Decorative background gradient */}
       <div className="bg-linear-to-br from-primary/5 via-background to-muted/20 absolute inset-0" />
 
-      {/* Main footer content */}
-      <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      {/* Glass panel wrapper */}
+      <div className="glass relative mx-auto max-w-7xl rounded-t-2xl px-4 py-12 sm:px-6 lg:px-8 overflow-hidden">
         <div className="mb-8 grid grid-cols-1 gap-8 md:grid-cols-3">
           {/* Brand/Info Section */}
           <motion.div
@@ -196,7 +196,6 @@ export default function Footer() {
             </Button>
           </motion.div>
         </div>
-      </div>
 
       {/* Subtle bottom border */}
       <div className="bg-linear-to-r h-1 from-blue-500 via-purple-500 to-pink-500" />
