@@ -5,11 +5,12 @@
   "homepage": "https://hamedsadim-portfolio.vercel.app",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "eslint src/",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "postinstall": "prisma generate",
     "prepare": "husky"
   },
   "prisma": {
