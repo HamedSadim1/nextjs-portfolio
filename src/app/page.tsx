@@ -93,7 +93,7 @@ export default async function Home() {
     // Transform database data naar component format
     const skills: SkillCategory[] = skillsDataArray.map((category) => ({
       title: category.title,
-      skills: category.skills.map((skill) => skill.name),
+      skills: category.skills.map((skill: Skill) => skill.name),
     }));
 
     // Transform projecten - tags zijn al arrays dankzij JSON opslag in database
