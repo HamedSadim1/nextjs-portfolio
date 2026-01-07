@@ -315,22 +315,26 @@ npm run build && npm run start
 Dit project volgt strikte TypeScript best practices voor maximale type veiligheid:
 
 ### TypeScript Configuration
+
 - **Strict Mode**: Alle strict TypeScript regels ingeschakeld
 - **No Any Types**: 100% any-type free codebase
 - **Explicit Types**: Alle variabelen, parameters en returns expliciet getypeerd
 
 ### Code Quality Standards
+
 - **ESLint**: Strenge linting regels voor consistentie
 - **Prettier**: Automatische code formatting
 - **Pre-commit Hooks**: Husky voor kwaliteit controle
 - **Error Boundaries**: Graceful error handling in productie
 
 ### Database Type Safety
+
 - **Prisma Generated Types**: 100% type-safe database queries
 - **Schema Validation**: Strenge database schema definitie
 - **Migration Safety**: Type-checked database migrations
 
 ### Performance Optimizations
+
 - **Turbopack**: Next.js 16 met razendsnelle builds
 - **Tree Shaking**: Alleen gebruikte code in productie build
 - **Image Optimization**: Next.js Image component voor optimale loading
