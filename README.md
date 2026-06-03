@@ -1,10 +1,10 @@
 # 🚀 Hamid Sadim - Portfolio Website
 
 [![Live Demo](https://img.shields.io/badge/Live_Demo-Visit-blue?style=for-the-badge&logo=vercel)](https://hamedsadim-portfolio.vercel.app/)
-[![Next.js](https://img.shields.io/badge/Next.js-16.1.1-black)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC)](https://tailwindcss.com/)
-[![Prisma](https://img.shields.io/badge/Prisma-7.2.0-2D3748)](https://prisma.io/)
+[![Next.js](https://img.shields.io/badge/Next.js-16.2.7-black)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-6.0-blue)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.3.0-38B2AC)](https://tailwindcss.com/)
+[![Prisma](https://img.shields.io/badge/Prisma-7.8.0-2D3748)](https://prisma.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Een moderne, volledig responsive portfolio website gebouwd met Next.js 16, Tailwind CSS en Prisma. Toont projecten, vaardigheden en persoonlijke informatie op een professionele en visueel aantrekkelijke manier met **100% type safety** en moderne glassmorphism effecten.
@@ -24,8 +24,8 @@ Een moderne, volledig responsive portfolio website gebouwd met Next.js 16, Tailw
 
 ### 🛠️ Technologieën
 
-- **Frontend Skills** - React 19, Next.js 16, TypeScript 5.6, Tailwind CSS 4.0
-- **Backend Skills** - Node.js, Prisma 7.2.0, SQLite, REST APIs
+- **Frontend Skills** - React 19, Next.js 16, TypeScript 6.0, Tailwind CSS 4.3.0
+- **Backend Skills** - Node.js, Prisma 7.8.0, SQLite, REST APIs
 - **Tools** - Git, VS Code, Figma, Docker, Vercel, Turbopack
 - **Development Practices** - Type Safety (0% any types), Accessibility, Performance, Modern CSS
 
@@ -52,24 +52,24 @@ Een moderne, volledig responsive portfolio website gebouwd met Next.js 16, Tailw
 - ✅ **Glassmorphism Effects** - Modern glass-like UI components with backdrop blur
 - ✅ **Enhanced Error Handling** - Comprehensive error boundaries and fallback UI
 - ✅ **Performance Optimizations** - Turbopack integration and optimized builds
-- ✅ **Prisma 7.2.0** - Latest Prisma with libSQL adapter for better performance
-- ✅ **Tailwind CSS 4.0** - Latest Tailwind with improved utilities
+- ✅ **Prisma 7.8.0** - Latest Prisma with libSQL adapter for better performance
+- ✅ **Tailwind CSS 4.3.0** - Latest Tailwind with improved utilities
 - ✅ **Production Ready** - Fully tested build pipeline and deployment
 
 ## 🏗️ Tech Stack
 
 ### Frontend
 
-- **Framework:** Next.js 16.1.1 (App Router + Turbopack)
-- **Language:** TypeScript 5.6 (Strict Mode)
-- **Styling:** Tailwind CSS 4.0
+- **Framework:** Next.js 16.2.7 (App Router + Turbopack)
+- **Language:** TypeScript 6.0 (Strict Mode)
+- **Styling:** Tailwind CSS 4.3.0
 - **Components:** shadcn/ui (Radix UI primitives)
-- **Animations:** Framer Motion 11.0+
+- **Animations:** Framer Motion 12.40.0
 - **Icons:** Lucide React
 
 ### Backend & Database
 
-- **ORM:** Prisma 7.2.0
+- **ORM:** Prisma 7.8.0
 - **Database:** SQLite (development) / PostgreSQL (production)
 - **Adapter:** libSQL (high-performance SQLite)
 - **API:** Next.js API Routes (Server Components)
