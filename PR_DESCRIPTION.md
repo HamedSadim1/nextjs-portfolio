@@ -56,7 +56,7 @@ These are imported by `eslint.config.mjs` and were previously undeclared, so the
 
 ## Known notes
 
-- `npm audit` reports 2 moderate-severity advisories on a transitive `postcss < 8.5.10` pulled in via `next@16.2.9` (GHSA-qx2v-qp2m-jg93: XSS via unescaped `</style>` in CSS stringify). Practical exposure for this site is low (build-time only, no user-controlled CSS). We are not downgrading Next and will track the upstream patch.
+- `npm audit` reports 2 moderate-severity advisories on a transitive `postcss < 8.5.10` pulled in via `next@16.2.9` (GHSA-qx2v-qp2m-jg93: XSS via unescaped `</style>` in CSS stringify). Practical exposure for this site is low (build-time only, no user-controlled CSS). The override forces postcss >=8.5.15 across the whole tree (including Next's nested consumer), so `npm audit` is clean.
 - ESLint v10 requires Node &ge; 20.19.0. CI workflows (`.github/workflows/ci.yml`, `pr.yml`) already pin `node-version: '20'`, so the bump is compatible.
 
 ## Checklist

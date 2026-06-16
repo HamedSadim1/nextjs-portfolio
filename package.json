@@ -62,6 +62,7 @@
     "typescript": "^6"
   },
   "overrides": {
-    "@prisma/dev": "^0.24.14"
+    "@prisma/dev": "^0.24.14",
+    "postcss": "^8.5.15"
   }
 }
