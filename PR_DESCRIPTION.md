@@ -37,11 +37,11 @@ The original `ncu -u` bumped `eslint ^9.39.4 → ^10.5.0`. That triggered persis
 | `eslint-plugin-jsx-a11y@6.10.2` | `^3..^9`        |
 | `eslint-plugin-react@7.37.5`    | `^3..^9.7`      |
 
-None of these three plugins is referenced in our flat `eslint.config.mjs`, but `eslint-config-next` ships them as transitive deps for its legacy `.eslintrc` flow. Resolution: roll `eslint` (and `@eslint/js`, which tracks the ESLint major) back to `^9.39.4`. Traded ESLint v10 features; gained a clean `npm i`.
+None of these three plugins is referenced in our flat `eslint.config.mjs`, but `eslint-config-next` ships them as transitive deps for its legacy `.eslintrc` flow. Resolution: roll `eslint` (and `@eslint/js`, which tracks the ESLint major) back to `^9.39.4`. Traded ESLint v10 features; gained a clean `npm i`. *(Alternative considered: `legacy-peer-deps=true` in a project-root `.npmrc` would suppress these warnings while keeping `eslint@^10.5.0`. We prefer the explicit downgrade so the install stays default and the deferred decisions are visible to the next maintainer. Note: `legacy-peer-deps` also masks any *future* peer-dep conflict — the explicit downgrade was therefore preferred primarily to keep `ERESOLVE` warnings readable as a forward-looking signal of upstream plugin-peer progress.)*
 
 ### Security fix: `postcss` override (clears `GHSA-qx2v-qp2m-jg93`)
 
-Adds `"postcss": "^8.5.15"` to `package.json#overrides`. This forces the root `postcss@8.5.15` over the transitive `postcss@8.4.31` that next@16.2.9 pulls in, clearing two moderate npm-audit advisories (XSS via unescaped `</style>` in CSS stringify). `npm audit` now reports 0 vulnerabilities. Cold `next build` (after `rm -rf .next`) confirms the override doesn't regress the CSS pipeline.
+Adds `"postcss": "^8.5.15"` to `package.json#overrides`. This forces the root `postcss@8.5.15` over the transitive `postcss@8.4.31` that next@16.2.9 pulls in, clearing two moderate npm-audit advisories (XSS via unescaped `</style>` in CSS stringify). `npm audit` now reports 0 vulnerabilities. Cold `next build` (after `rm -rf .next`) confirms the override doesn't regress the CSS pipeline. `^8.5.15` is chosen specifically to match the root devDep range — the actual advisory floor is `8.5.10`, but an override wider than the root devDep range (such as `^8.5.10`) trips npm 11's stricter `EOVERRIDE` check on `npm install`.
 
 ### New devDependencies (flat ESLint config)
 
