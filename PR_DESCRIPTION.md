@@ -58,6 +58,18 @@ All four are imported at the top of `eslint.config.mjs` (lines 1-4) and were pre
 
 - `README.md`: badges and stack mentions refreshed (`Next.js 16.2.9`, `Tailwind CSS 4.3.1`, `TypeScript 6`).
 
+## Commits in this PR (chronological)
+
+| Commit    | Type          | Subject                                                               | Touched                                                                                                                                                                               |
+| --------- | ------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `63fd62b` | refactor      | update all packages                                                   | bookkeeping on `package-lock.json`                                                                                                                                                    |
+| `07eef5f` | chore         | bump all packages to latest and refresh README                        | initial `ncu -u` (next 16.2.7→16.2.9, eslint →10.5.0, tailwindcss 4.3.0→4.3.1, etc.) + 4 previously-undeclared flat-ESLint devDeps + README badge sync + `PR_DESCRIPTION.md` scaffold |
+| `2dfd130` | fix(security) | force postcss >=8.5.15 via overrides to clear audit                   | adds `"postcss": "^8.5.15"` to `package.json#overrides` to close two moderate `npm audit` findings (transitive `postcss@8.4.31` via `next@16.2.9`)`                                   |
+| `f90a2d6` | chore(deps)   | roll back eslint to ^9.39.4 to clear ERESOLVE warnings                | reverses the `eslint@^10.5.0` (and `@eslint/js@^10.0.1`) bumps that `07eef5f` introduced — three plugins nested under `eslint-config-next@16.2.9` still cap their ESLint peer at `^9` |
+| `c7fb6e6` | docs(pr)      | clarify EOVERRIDE rationale and document legacy-peer-deps alternative | doc-only: spells out _why_ `^8.5.15` (not `^8.5.10`) and _why_ the explicit eslint downgrade over a `.npmrc legacy-peer-deps=true` workaround                                         |
+
+Read top-down for the full trade-off trajectory: chased "latest of everything" in `07eef5f`, surfaced an audit finding AND a peer-dep constraint that the naive bumps made visible, then resolved both in `2dfd130` and `f90a2d6` (and self-documented the rationale in `c7fb6e6`) without backing out the other bumps.
+
 ## Why
 
 - Pull in upstream patches and compatibility fixes since the last refresh.
